@@ -13,7 +13,8 @@ interface StateType {
     result: string[],
     words:WordType[],
     error?:string,
-    login:boolean
+    login:boolean,
+    otpVal:string
 }
 
 type FetchedDataType = {
