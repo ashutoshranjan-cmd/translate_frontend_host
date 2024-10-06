@@ -4,6 +4,8 @@ import { TextField, Button, Paper, Typography, Box } from '@mui/material';
 import { styled } from '@mui/system';
 import { useNavigate } from 'react-router-dom';
 import { toast, Toaster } from 'react-hot-toast';
+import {useDispatch } from 'react-redux';
+import { getOtp } from '../redux/slices';
 
 const GradientBackground = styled(Box)({
   background: 'linear-gradient(to bottom, #e6f2ff, #bde0ff)',
@@ -49,6 +51,7 @@ const Forget = () => {
   const [error] = useState('');
   const navigate = useNavigate();
   const otpInputRefs = useRef<(HTMLInputElement | null)[]>([]);
+  const dispatch = useDispatch();
 
  
   useEffect(() => {
@@ -84,6 +87,7 @@ const Forget = () => {
     e.preventDefault(); // Prevents form from reloading the page
     try {
       const otpValue = otp.join(''); // Join the OTP digits
+      dispatch(getOtp(otpValue));
       const result = await fetch('/api/users/verify', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
