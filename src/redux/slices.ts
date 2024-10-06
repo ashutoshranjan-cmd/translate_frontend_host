@@ -6,7 +6,8 @@ const initialState: StateType = {
     darkMode:false,
     words: [],
     result: [],
-    login:false
+    login:false,
+    otpVal:""
 }
 const rootSlice = createSlice({
     name: "root",
@@ -38,10 +39,13 @@ const rootSlice = createSlice({
         },
         getLogin:(state,action:PayloadAction<boolean>)=>{
             state.login = action.payload
+        },
+        getOtp:(state,action:PayloadAction<string>)=>{
+            state.otpVal = action.payload
         }
         
 
     },
 })
-export const {getWordsSuccess,getWordsRequest,getWordsFail,clearState,saveResult,dark,getLogin} = rootSlice.actions;
+export const {getWordsSuccess,getWordsRequest,getWordsFail,clearState,saveResult,dark,getLogin,getOtp} = rootSlice.actions;
 export default rootSlice.reducer;
