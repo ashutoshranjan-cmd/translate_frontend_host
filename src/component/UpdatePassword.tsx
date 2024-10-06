@@ -4,6 +4,8 @@ import { styled } from '@mui/system';
 import { motion } from 'framer-motion';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
 
 const GradientBackground = styled(Box)({
   background: 'linear-gradient(to bottom, #e6f2ff, #bde0ff)',
@@ -38,6 +40,7 @@ const UpdatePassword = () => {
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const navigate = useNavigate();
+  const {otpVal} = useSelector((state:any) => state.root);
 
   const calculatePasswordStrength = (password:any) => {
     let strength = 0;
@@ -72,7 +75,7 @@ const UpdatePassword = () => {
     const result = await fetch('/api/users/update',{
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ newPassword }),
+        body: JSON.stringify({otpVal, newPassword }),
       });
     console.log(await result.json());
     navigate("/")
