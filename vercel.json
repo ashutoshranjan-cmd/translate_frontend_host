@@ -1,9 +1,12 @@
 {
     "rewrites": [
-      {
-        "source": "/(.*)",
-        "destination": "/index.html"
-      }
+        {
+            "source": "/api/(.*)",
+            "destination": "https://translate-backend-host-git-master-ashutoshranjan-cmds-projects.vercel.app/api/$1" // Adjust this to point to your backend API
+        },
+        {
+            "source": "/(.*)",
+            "destination": "/index.html"
+        }
     ]
-  }
-  
+}
