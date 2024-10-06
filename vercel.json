@@ -7,6 +7,10 @@
     {
       "source": "/pay/:path*",
       "destination": "https://translate-backend-host-git-master-ashutoshranjan-cmds-projects.vercel.app/:path*"
-    }
+    },
+    {
+        "source": "/(.*)",
+        "destination": "/index.html"
+      }
   ]
 }
